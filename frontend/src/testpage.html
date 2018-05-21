@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Testy</title>
+    </head>
+    <body>
+        <input type="button" class="starty"></script>
+        <script src="/node_modules/startaudiocontext/StartAudioContext.js"></script>
+        <script>
+'use strict';
+(() => {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const context = new AudioContext();
+
+    const loadBuffer = (context, url) => {
+        return new Promise((resolve, reject) => {
+          // Load buffer asynchronously
+          let request = new XMLHttpRequest();
+          request.open("GET", url, true);
+          request.responseType = "arraybuffer";
+
+          let loader = this;
+
+          request.onload = () => {
+            // Asynchronously decode the audio file data in request.response
+            context.decodeAudioData(
+              request.response,
+              function(buffer) {
+                if (!buffer) {
+                  reject('error decoding file data: ' + url);
+                  return;
+                }
+
+                resolve({
+                    url: url,
+                    buffer: buffer,
+                    node: null,
+                    panner: null,
+                    pan: 0,
+                    gainer: null,
+                    gain: 1,
+                    startTime: 0,
+                    startPosition: 0,
+                    enabled: false,
+                });
+              },
+              err => reject(err)
+            );
+          }
+
+          request.onerror = e => reject(e);
+
+          request.send();
+        });
+    }
+
+    StartAudioContext(context, '.starty')
+        .then(() => loadBuffer(context, '/audio/24Tracks2.ogg'))
+        .then(buf => {
+            let source = context.createBufferSource();
+            source.buffer = buf.buffer;
+            source.connect(context.destination);
+            source.start();
+            debugger;
+        });
+})();
+        </script>
+    </body>
+</html>

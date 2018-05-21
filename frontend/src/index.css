@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 1em;
+  font-family: sans-serif;
+}
+
+input[type="range"] {
+    width: 90vw;
+    display: block;
+}
+
+button {
+    width: 75px;
+    height: 75px;
+    margin: .5em;
+    border-radius: .5em;
+}
+

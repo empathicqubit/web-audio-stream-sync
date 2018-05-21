@@ -1,0 +1,45 @@
+.clients input[type="range"] {
+    display: block;
+        float: left;
+    width: 5em;
+    height: 10em;
+    -webkit-appearance: slider-vertical;
+}
+
+.clients {
+    display: flex;
+}
+
+.clients > li {
+    min-width: 350px;
+    width: 15vw;
+    display: block;
+    float: left;
+}
+
+.sources > li {
+    background-color: red;
+    list-style-type: none;
+}
+
+.sources > li.enabled {
+    background-color: green;
+}
+
+.name-input {
+    width: 20em;
+}
+
+.knobs {
+    display: flex;
+    text-align: center;
+}
+
+.knobs li {
+    list-style-type: none;
+    padding: 1em;
+}
+
+.track-controls {
+    display: flex;
+}

@@ -1,0 +1,6 @@
+build/**/*
+.env
+node_modules/**/*
+frontend/node_modules/**/*
+storage.json
+Dockerfile

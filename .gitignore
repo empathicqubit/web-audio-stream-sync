@@ -4,3 +4,4 @@ node_modules/
 frontend/public/audio/
 storage.json
 .env
+build/

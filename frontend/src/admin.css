@@ -11,19 +11,30 @@
 }
 
 .clients > li {
+    margin: .5em;
     min-width: 350px;
     width: 15vw;
     display: block;
     float: left;
 }
 
+.sources {
+    margin-top: .5em;
+    border-radius: .3em;
+    overflow: hidden;
+    font-weight: 900;
+}
+
 .sources > li {
-    background-color: red;
+    background-color: #c01030;
     list-style-type: none;
+    border-bottom: 1px solid #c55;
+    padding: .5em .3em;
 }
 
 .sources > li.enabled {
-    background-color: green;
+    border-bottom: 1px solid #5c5;
+    background-color: #109030;
 }
 
 .name-input {
@@ -38,6 +49,20 @@
 .knobs li {
     list-style-type: none;
     padding: 1em;
+}
+
+.knobs .pan {
+    background-image: url('../node_modules/material-design-icons/action/svg/design/ic_pan_tool_24px.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 40% 35%;
+}
+
+.knobs .gain {
+    background-image: url('../node_modules/material-design-icons/av/svg/design/ic_volume_up_24px.svg');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: 70% 46%;
 }
 
 .track-controls {

@@ -180,7 +180,7 @@ class Admin extends React.Component {
                     </div> 
                     ) : (
                     <div>
-                        Current play position: {this.state.syncPacket.timecode / 1000}<br />
+                        Current play position: {this.state.syncPacket.timecode / 1000} seconds<br />
                         <input type="range" min={0} max={370000} step={1} value={this.state.syncPacket.timecode} onChange={ evt => this.adjustTimecode(evt.target.value) } />
                         <div className="track-controls">
                             <button onClick={ () => this.restart() }>
@@ -198,6 +198,7 @@ class Admin extends React.Component {
                             ? state.clients.map((client) => 
                                 <li key={client.id}>
                                     Client {client.name || client.id} <br />
+                                    <br />
                                     Sources: <br />
                                     <ul className="sources">
                                         {client.sources.map((source) => 
@@ -206,11 +207,11 @@ class Admin extends React.Component {
                                                 <ul class="knobs">
                                                     <li>
                                                         Pan<br />
-                                                        <Knob bgColor="#000" width={75} height={75} min={-1} value={source.pan} max={1} step={0.01} onChange={ (val) => this.adjustPan(client, source, val) } />
+                                                        <Knob className="pan" bgColor="#000" width={75} height={75} min={-1} value={source.pan} max={1} step={0.01} onChange={ (val) => this.adjustPan(client, source, val) } />
                                                     </li>
                                                     <li>
                                                         Gain<br />
-                                                        <Knob bgColor="#000" width={75} height={75} min={0} value={source.gain} max={5} step={0.01} onChange={ (val) => this.adjustGain(client, source, val) } />
+                                                        <Knob className="gain" bgColor="#000" width={75} height={75} min={0} value={source.gain} max={5} step={0.01} onChange={ (val) => this.adjustGain(client, source, val) } />
                                                     </li>
                                                     <li>
                                                         <button onClick={ () => this.clickSource(client, source) }>

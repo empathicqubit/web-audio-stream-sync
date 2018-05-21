@@ -14,7 +14,7 @@ class BufferClient extends React.Component {
                     <input type="button" className="playit" />
                     <br />
                 </div>
-                Current play position: {this.props.realPosition / 1000}
+                Current play position: {this.props.realPosition / 1000} seconds
                 <br />
                 Enabled sources:
                 <ul>

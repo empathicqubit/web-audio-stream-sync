@@ -223,7 +223,7 @@ class Admin extends React.Component {
                                         )}
                                     </ul>
                                 </li>
-                            ) : <li><h2><strong>No clients connected! Open up another browser to the homepage and click the Client link.</strong></h2></li>}
+                            ) : <li><h2><strong>No clients connected! Open up another browser to the homepage and click the Client link, or create virtual clients in the Simulator.</strong></h2></li>}
                         </ul>
                     </div>
                     )

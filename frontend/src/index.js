@@ -83,10 +83,6 @@ const getProps = () => {
         let context = new AudioContext();
 
         const createClient = () => {
-            let clickedX = 0;
-            let clickedY = 0;
-            let down = false;
-
             let mixerNode = null;
 
             let options = {
@@ -145,23 +141,9 @@ const getProps = () => {
                 clientId: 0,
                 x: 0,
                 y: 0,
-                onMouseDown: (evt) => {
-                    down = true;
-                    clickedX = evt.clientX;
-                    clickedY = evt.clientY;
-                },
-                onMouseUp: () => {
-                    down = false;
-                },
-                onMouseMove: (evt) => {
-                    if(down) {
-                        updateX(client.x + evt.clientX - clickedX);
-                        updateY(client.y + evt.clientY - clickedY);
-                        
-                        clickedX = evt.clientX;
-                        clickedY = evt.clientY;
-                    }
-                    
+                onDrag: (evt, data) => {
+                    updateX(data.x);
+                    updateY(data.y);
                     render();
                 },
                 onChangeName: (name) => {
@@ -197,37 +179,19 @@ const getProps = () => {
             context.listener.positionZ.value = 250 - newY;
         }
 
-        let clickedX = 0;
-        let clickedY = 0;
-        let down = false;
-        
         let simulator = {
             clients: clients,
             passwordSubmitted: false,
             password: '',
             listenerX: 250,
             listenerY: 250,
-            onNewMixerNode: () => {
-                clients.push(createClient());
+            onDrag: (evt, data) => {
+                updateX(data.x);
+                updateY(data.y);
                 render();
             },
-            onMouseDown: (evt) => {
-                down = true;
-                clickedX = evt.clientX;
-                clickedY = evt.clientY;
-            },
-            onMouseUp: () => {
-                down = false;
-            },
-            onMouseMove: (evt) => {
-                if(down) {
-                    updateX(simulator.listenerX + evt.clientX - clickedX);
-                    updateY(simulator.listenerY + evt.clientY - clickedY);
-            
-                    clickedX = evt.clientX;
-                    clickedY = evt.clientY;
-                }
-            
+            onNewMixerNode: () => {
+                clients.push(createClient());
                 render();
             },
             onSubmitPassword: (password) => doHello(password),

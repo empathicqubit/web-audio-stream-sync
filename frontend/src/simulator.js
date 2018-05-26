@@ -1,6 +1,7 @@
 import BufferClient from './buffer-client.js';
 import BufferClientBackend from './buffer-client-backend.js';
 import React from 'react';
+import Draggable from 'react-draggable';
 
 import './simulator.css';
 import 'material-design-icons/sprites/svg-sprite/svg-sprite-hardware.css';
@@ -15,6 +16,11 @@ class Simulator extends React.Component {
                 <h1>
                     Simulator
                 </h1>
+                <p>
+                    Add virtual clients here, and go to the admin page to control them. Moving them around
+                    the room will allow you to change how they would sound to the listener (you). The listener's
+                    location is represented by the ear icon, and can also be moved around the room.
+                </p>
                 <button onClick={ () => this.props.onNewMixerNode() }>
                     Create new client
                 </button>
@@ -25,12 +31,17 @@ class Simulator extends React.Component {
                             Submit
                         </button>
                     </div> : null}
-                <div className="grid">
-                    <div className="head" style={{ top: this.props.listenerY, left: this.props.listenerX }} onMouseMove={this.props.onMouseMove} onMouseUp={this.props.onMouseUp} onMouseDown={this.props.onMouseDown} />
+                <h2>Virtual Room</h2>
+                <div className="room">
+                    <Draggable position={{ x: this.props.listenerX, y: this.props.listenerY }} onDrag={this.props.onDrag}>
+                        <div className="listener" />
+                    </Draggable>
                     {this.props.clients.map(client => 
-                        <div key={client.clientId} onMouseOut={client.onMouseMove} onMouseMove={client.onMouseMove} onMouseDown={client.onMouseDown} onMouseUp={client.onMouseUp} className="speaker" style={{ top: client.y , left: client.x }}>
-                            {client.name || client.clientId}
-                        </div>
+                        <Draggable position={{ x: client.x, y: client.y }} key={client.clientId} onDrag={client.onDrag}>
+                            <div className="speaker">
+                                {client.name || client.clientId}
+                            </div>
+                        </Draggable>
                     )}
                 </div>
                 <div className="clients">

@@ -5,9 +5,14 @@
 }
 
 body {
-  margin: 0;
-  padding: 1em;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 1em;
+    font-family: sans-serif;
+    background-color: #FCC5A2;
+}
+
+body, button {
+    color: #00173D;
 }
 
 input[type="range"] {
@@ -20,5 +25,7 @@ button {
     height: 75px;
     margin: .5em;
     border-radius: .5em;
+    background-color: #F0957D;
+    border-color: #F17A6B;
 }
 

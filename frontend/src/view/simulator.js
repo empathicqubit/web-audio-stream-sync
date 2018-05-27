@@ -9,6 +9,9 @@ class Simulator extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentWillUnmount() {
+        this.props.onComponentUnmount && this.props.onComponentUnmount();
+    }
     render() {
         return (
             <div>

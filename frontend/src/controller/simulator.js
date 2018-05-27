@@ -61,6 +61,7 @@ function getProps (render) {
         }
 
         let client = {
+            _backend: backend,
             sources: [],
             realPosition: 0,
             clientId: 0,
@@ -76,9 +77,6 @@ function getProps (render) {
                 client.name = name;
                 render();
             },
-            onComponentUnmount: () => {
-                backend.close();
-            }
         };
 
         StartAudioContext(backend._context, '.playit')
@@ -123,6 +121,9 @@ function getProps (render) {
             render();
         },
         onSubmitPassword: (password) => doHello(password),
+        onComponentUnmount: () => {
+            clients.forEach(x => x._backend.close());
+        },
         onChangePassword: (password) => {
             simulator.password = password;
             render();

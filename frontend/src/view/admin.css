@@ -1,6 +1,6 @@
 .clients input[type="range"] {
     display: block;
-        float: left;
+    float: left;
     width: 5em;
     height: 10em;
     -webkit-appearance: slider-vertical;
@@ -52,14 +52,14 @@
 }
 
 .knobs .pan {
-    background-image: url('../node_modules/material-design-icons/action/svg/design/ic_pan_tool_24px.svg');
+    background-image: url('../../node_modules/material-design-icons/action/svg/design/ic_pan_tool_24px.svg');
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: 40% 35%;
 }
 
 .knobs .gain {
-    background-image: url('../node_modules/material-design-icons/av/svg/design/ic_volume_up_24px.svg');
+    background-image: url('../../node_modules/material-design-icons/av/svg/design/ic_volume_up_24px.svg');
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: 70% 46%;

@@ -1,5 +1,4 @@
 import BufferClient from './buffer-client.js';
-import BufferClientBackend from './buffer-client-backend.js';
 import React from 'react';
 import Draggable from 'react-draggable';
 

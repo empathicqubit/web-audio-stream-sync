@@ -10,7 +10,7 @@
 
 .speaker::before {
     content: "";
-    mask-image: url('../node_modules/material-design-icons/hardware/svg/design/ic_speaker_24px.svg');
+    mask-image: url('../../node_modules/material-design-icons/hardware/svg/design/ic_speaker_24px.svg');
     mask-repeat: none;
     mask-size: contain;
     background-color: #109030;
@@ -37,7 +37,7 @@
 
 .listener::before {
     content: "";
-    mask-image: url('../node_modules/material-design-icons/av/svg/design/ic_hearing_24px.svg');
+    mask-image: url('../../node_modules/material-design-icons/av/svg/design/ic_hearing_24px.svg');
     mask-repeat: none;
     mask-size: contain;
     background-color: #F17A6B;

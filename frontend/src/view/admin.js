@@ -170,6 +170,9 @@ class Admin extends React.Component {
                 <h1>
                     Source administrator
                 </h1>
+                <p>
+                    This interface allows you to control the state of connected clients; which tracks are playing as well as the pan and gain for each track.
+                </p>
                 {!this.state.passwordSubmitted
                     ? (
                     <div className="password-input">
@@ -180,11 +183,11 @@ class Admin extends React.Component {
                     </div> 
                     ) : (
                     <div>
-                        Current play position: {this.state.syncPacket.timecode / 1000} seconds<br />
+                        Current play position: <strong>{this.state.syncPacket.timecode / 1000} seconds</strong><br />
                         <input type="range" min={0} max={370000} step={1} value={this.state.syncPacket.timecode} onChange={ evt => this.adjustTimecode(evt.target.value) } />
                         <div className="track-controls">
                             <button onClick={ () => this.restart() }>
-                                Start over
+                                Restart song
                             </button>
                             <button onClick={ () => this.muteAll() }>
                                 Mute All Clients
@@ -197,6 +200,7 @@ class Admin extends React.Component {
                             {state.clients.length
                             ? state.clients.map((client) => 
                                 <li key={client.id}>
+                                    <div style={{position: 'relative', display: 'inline-block' }} className="speaker"></div>
                                     Client {client.name || client.id} <br />
                                     <br />
                                     Sources: <br />

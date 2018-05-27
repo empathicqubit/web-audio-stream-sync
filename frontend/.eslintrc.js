@@ -3,5 +3,6 @@ module.exports = {
     rules: {
         "no-restricted-globals": "off",
         "no-undef": "off",
+        "eqeqeq": "off",
     },
 };

@@ -10,6 +10,7 @@ class BufferClient extends React.Component {
         let enabledSources = this.props.sources.filter(source => source.enabled);
         return (
             <div>
+                <div style={{position: 'relative', display: 'inline-block' }} className="speaker"></div>
                 <strong>{"Client " + (this.props.clientName || this.props.clientId)}</strong>
                 <br />
                 <div>

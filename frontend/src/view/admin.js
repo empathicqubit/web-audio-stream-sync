@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';       
-import Knob from 'react-canvas-knob';
+import Knob from '../Knob';
 
 import './admin.css';
 

@@ -17,6 +17,8 @@ import getAdminProps from './controller/admin';
 import Simulator from './view/simulator';
 import getSimulatorProps from './controller/simulator';
 
+registerServiceWorker();
+
 const render = () => ReactDOM.render(router(), document.getElementById('root'));
 
 let clientProps, adminProps, simulatorProps;
@@ -33,4 +35,3 @@ const router = () => {
 };
 
 render();
-registerServiceWorker();

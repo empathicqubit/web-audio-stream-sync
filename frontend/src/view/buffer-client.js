@@ -6,6 +6,9 @@ class BufferClient extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentWillUnmount() {
+        this.props.onComponentUnmount && this.props.onComponentUnmount();
+    }
     render() {
         let enabledSources = this.props.sources.filter(source => source.enabled);
         return (

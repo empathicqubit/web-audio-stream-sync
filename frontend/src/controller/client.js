@@ -43,6 +43,10 @@ function getProps(render) {
             });
     };
 
+    client.onComponentUnmount = () => {
+        backend.close();
+    }
+
     return client;
 };
 

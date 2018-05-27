@@ -6,7 +6,7 @@ const q = require('q');
 const fs = require('fs');
 const cors = require('cors');
 const execFile = q.denodeify(require('child_process').execFile);
-const mediainfo = q.denodeify(require('mediainfo-parser').exec);
+const musicMetadata = require('music-metadata');
 const path = require('path');
 const ws = require('./ws');
 const config = require('./config.js');
@@ -17,7 +17,7 @@ const app = express();
 
 app.listen(3030, () => console.log('Listening...'));
 
-const whitelist = ['http://localhost:3032', new RegExp('^http://.*:3032')];
+const whitelist = ['http://localhost:3032', new RegExp('^http://.*:3032'), new RegExp('^http://.*:3000')];
 
 const corsOptions = {
     origin: (origin, callback) => {
@@ -41,8 +41,10 @@ app.get('/files.json', cors(corsOptions), (req, res) => {
 
 const getDuration = (filename) => {
     return q.resolve()
-        .then(() => mediainfo(filename))
-        .then(meta => meta.file.track[0].duration );
+        .then(() => musicMetadata.parseFile(filename))
+        .then(meta => {
+            return meta.format.duration * 1000;
+        });
 };
 
 q.resolve()

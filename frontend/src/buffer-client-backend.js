@@ -240,6 +240,11 @@ class BufferClientBackend {
             });
 
     }
+    close() {
+        this._context.close();
+        this._ws.onclose = () => {};
+        this._ws.close();
+    }
     resume() {
         this._context.resume();
     }

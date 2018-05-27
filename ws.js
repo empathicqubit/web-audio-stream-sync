@@ -5,7 +5,6 @@ const q = require('q');
 const fs = require('fs');
 const cors = require('cors');
 const execFile = q.denodeify(require('child_process').execFile);
-const mediainfo = q.denodeify(require('mediainfo-parser').exec);
 const path = require('path');
 const lowdb = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');

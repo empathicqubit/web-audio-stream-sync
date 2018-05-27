@@ -76,6 +76,9 @@ function getProps (render) {
                 client.name = name;
                 render();
             },
+            onComponentUnmount: () => {
+                backend.close();
+            }
         };
 
         StartAudioContext(backend._context, '.playit')

@@ -6,6 +6,8 @@ import StartAudioContext from 'startaudiocontext';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import './index.css';
+import './range.css';
+
 import App from './app';
 import Client from './client';
 import Admin from './admin';

@@ -15,6 +15,13 @@ body, button {
     color: #00173D;
 }
 
+input[type="text"], input[type="number"], input[type="email"] {
+    background-color: #A2F9FC;
+    border: 2px ridge #F17A6B;
+    border-radius: .4em;
+    padding: 0.25em;
+}
+
 input[type="range"] {
     width: 90vw;
     display: block;

@@ -13,7 +13,7 @@
     mask-image: url('../node_modules/material-design-icons/hardware/svg/design/ic_speaker_24px.svg');
     mask-repeat: none;
     mask-size: contain;
-    background-color: green;
+    background-color: #109030;
     width: 100%;
     z-index: -1;
     height: 100%;
@@ -27,6 +27,7 @@
     padding-top: 1em;
     width: 3em;
     height: 3em;
+    background-color: #c01030;;
     color: #000;
     border-radius: 3em;
     vertical-align: bottom;

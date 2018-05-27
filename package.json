@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "debug": "npm-run-all --parallel frontend debug-server",
+    "debug": "npm-run-all --parallel debug-frontend debug-server",
     "debug-server": "nodemon --inspect-brk=0.0.0.0:9229 ./index.js",
     "debug-frontend": "cd ./frontend && yarn install && yarn run start",
     "start": "npm-run-all --parallel frontend server",

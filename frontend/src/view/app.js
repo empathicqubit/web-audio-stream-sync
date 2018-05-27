@@ -1,21 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+
+import './app.css';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <ul>
-                    <li>
-                        <Link to="/admin">Admin</Link>
-                    </li>
-                    <li>
-                        <Link to="/client">Client</Link>
-                    </li>
-                    <li>
-                        <Link to="/simulator">Simulator</Link>
-                    </li>
-                </ul>
+                <header>
+                    <nav>
+                        <ul>
+                            <li>
+                                <NavLink to="/admin">Admin</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/client">Client</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/simulator">Simulator</NavLink>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <main>
+                    {this.props.routeSwitch}
+                </main>
             </div>
         );
     }

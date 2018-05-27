@@ -73,6 +73,10 @@ class Admin extends React.Component {
             }
         });
     }
+    componentWillUnmount() {
+        this.ws.onclose = () => {};
+        this.ws.close();
+    }
     doHello() {
         this.ws.send(JSON.stringify({type: 'hello_admin', password: this.state.password }));
     }

@@ -1,6 +1,7 @@
 'use strict';
 import BufferClient from './buffer-client.js';
 import React from 'react';
+import Helmet from 'react-helmet';
 
 let e = React.createElement;
 let n = null;
@@ -13,9 +14,12 @@ class Client extends React.Component {
         this.props.onComponentMount && this.props.onComponentMount();
     }
     render() {
-        return (
-            <BufferClient {...this.props} />
-        );
+        return ([
+            <Helmet>
+                <title>Client</title>
+            </Helmet>,
+            <BufferClient {...this.props} />,
+        ]);
     }
 }
 

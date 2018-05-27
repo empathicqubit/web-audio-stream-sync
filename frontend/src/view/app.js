@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 import './app.css';
 
@@ -7,6 +8,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <Helmet titleTemplate="Web Audio - %s">
+                    <title>Web Audio</title>
+                </Helmet>
                 <header>
                     <nav>
                         <ul>

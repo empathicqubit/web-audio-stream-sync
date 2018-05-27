@@ -1,6 +1,7 @@
 import BufferClient from './buffer-client.js';
 import React from 'react';
 import Draggable from 'react-draggable';
+import Helmet from 'react-helmet';
 
 import './simulator.css';
 import 'material-design-icons/sprites/svg-sprite/svg-sprite-hardware.css';
@@ -15,6 +16,9 @@ class Simulator extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>Simulator</title>
+                </Helmet>
                 <h1>
                     Simulator
                 </h1>

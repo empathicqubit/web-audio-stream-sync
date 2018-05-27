@@ -2,3 +2,7 @@
     margin: 0 1em;
     padding: 0 0.5em;
 }
+
+.enabled-sources ul {
+    padding-top: .5em;
+}

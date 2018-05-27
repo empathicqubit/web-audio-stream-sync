@@ -27,9 +27,9 @@ const render = () => ReactDOM.render(router(), document.getElementById('root'));
 let routeSwitch = (
     <Switch>
         <Route path="/" exact render={() => <Redirect to="/client" />} />
-        <Route path="/client" render={(routeProps) => <Client {...routeProps} {...clientProps || (clientProps = getClientProps(render))} />} />
-        <Route path="/admin" render={(routeProps) => <Admin {...routeProps} {...adminProps || (adminProps = getAdminProps(render))} />} />
-        <Route path="/simulator" render={(routeProps) => <Simulator {...routeProps} {...simulatorProps || (simulatorProps = getSimulatorProps(render))} />} />
+        <Route title="Client" path="/client" render={(routeProps) => <Client {...routeProps} {...clientProps || (clientProps = getClientProps(render))} />} />
+        <Route title="Admin" path="/admin" render={(routeProps) => <Admin {...routeProps} {...adminProps || (adminProps = getAdminProps(render))} />} />
+        <Route title="Simulator" path="/simulator" render={(routeProps) => <Simulator {...routeProps} {...simulatorProps || (simulatorProps = getSimulatorProps(render))} />} />
     </Switch>
 );
 

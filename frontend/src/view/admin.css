@@ -3,7 +3,25 @@
     float: left;
     width: 5em;
     height: 10em;
+    margin: 1em 0;
     -webkit-appearance: slider-vertical;
+}
+
+.track-controls button {
+    margin: 0;
+    border-radius: 0;
+}
+
+.track-controls button:first-child {
+    border-right: none;
+    border-bottom-left-radius: .5em;
+    border-top-left-radius: .5em;
+}
+
+.track-controls button:last-child {
+    border-left: none;
+    border-bottom-right-radius: .5em;
+    border-top-right-radius: .5em;
 }
 
 .clients {

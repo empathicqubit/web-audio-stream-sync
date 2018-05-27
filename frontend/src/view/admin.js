@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';       
 import Knob from '../Knob';
+import Helmet from 'react-helmet';
 
 import './admin.css';
 
@@ -171,6 +172,9 @@ class Admin extends React.Component {
         const state = this.state
         return (
             <div>
+                <Helmet>
+                    <title>Source Administrator</title>
+                </Helmet>
                 <h1>
                     Source administrator
                 </h1>

@@ -7,6 +7,7 @@
     "debug": "npm-run-all --parallel debug-frontend debug-server",
     "debug-server": "nodemon --inspect-brk=0.0.0.0:9229 ./index.js",
     "debug-frontend": "cd ./frontend && yarn install && yarn run start",
+
     "start": "npm-run-all --parallel frontend server",
     "frontend": "cd ./frontend && yarn install && yarn run build && npx static-html-server -p 3000 -r ./build -f index.html",
     "server": "node ./index.js"

@@ -14,12 +14,23 @@ class Client extends React.Component {
         this.props.onComponentMount && this.props.onComponentMount();
     }
     render() {
-        return ([
-            <Helmet>
-                <title>Client</title>
-            </Helmet>,
-            <BufferClient {...this.props} />,
-        ]);
+        return (
+            <div>
+                <Helmet>
+                    <title>{"Client " + this.props.clientName}</title>
+                </Helmet>
+                <h1>
+                    Client
+                </h1>
+                <p>
+                    This is the client page. This connects to the server, and will emit sounds with the configuration
+                    that the server specifies. If you enter a client name into the box below, it will load settings
+                    that were previously saved for this client after a few seconds. The client name is case sensitive.
+                    YARGY is different from Yargy and YaRgY.
+                </p>
+                <BufferClient {...this.props} />
+            </div>
+        );
     }
 }
 

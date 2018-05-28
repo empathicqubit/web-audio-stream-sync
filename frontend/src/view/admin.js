@@ -21,8 +21,8 @@ class Admin extends React.Component {
 
         let ws = this.ws = new WebSocket(`ws://${HOST}:3031`);
 
-        ws.addEventListener('close', () => window.location.reload());
-        ws.addEventListener('error', () => window.location.reload());
+        ws.addEventListener('close', () => setTimeout(window.location.reload, 5000));
+        ws.addEventListener('error', () => setTimeout(window.location.reload, 5000));
 
         ws.addEventListener('message', evt => {
             let data = JSON.parse(evt.data);

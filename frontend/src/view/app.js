@@ -8,7 +8,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Helmet titleTemplate="Web Audio - %s">
+                <Helmet titleTemplate="%s - Web Audio">
                     <title>Web Audio</title>
                 </Helmet>
                 <header>

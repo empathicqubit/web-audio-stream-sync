@@ -28,3 +28,5 @@ Running
 8. Paste the admin password into the box, and click submit.
 
 An interface will appear, allowing you to control the sources playing on each client individually. If you name the clients using the client name box, the client's settings will be saved to `storage.json` using that name, and will be recalled any time you enter that name, even if you restart the server.
+
+The original intent of this application was to play every track of Bohemian Rhapsody on a separate speaker. If you want to try doing that, you might want to look at https://queenpoland.wordpress.com/download/queen-multitracks/ . You will need to split MOGGs into OGGs with a tool like Audacity. If you use Audacity, the option is in the menu under File > Export > Export Multiple...

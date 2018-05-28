@@ -18,7 +18,7 @@ You may be able to use newer or older versions of these components, but this is 
 Running
 ----------------------------
 
-1. Create a folder at /frontend/public/audio and save your audio files there. They should all be the same length.
+1. Create a folder at /frontend/public/audio and save your OGG audio files there. They should all be the same length.
 2. Copy the file /.env.sample to /.env. Change the `AUDIO_FILES_ARRAY` to include your files.
 3. Change the `ADMIN_PASSWORD` in .env to something else!
 4. Run `yarn install`

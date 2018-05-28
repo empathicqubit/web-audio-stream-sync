@@ -191,7 +191,7 @@ class Admin extends React.Component {
                     </div> 
                     ) : (
                     <div>
-                        Current play position: <strong>{this.state.syncPacket.timecode / 1000} seconds</strong><br />
+                        Current play position: <strong>{(this.state.syncPacket.timecode / 1000).toFixed(2)} seconds</strong><br />
                         <input type="range" min={0} max={370000} step={1} value={this.state.syncPacket.timecode} onChange={ evt => this.adjustTimecode(evt.target.value) } />
                         <div className="track-controls">
                             <button onClick={ () => this.restart() }>

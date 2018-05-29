@@ -27,7 +27,7 @@ yarn run start
 ```
 4. Navigate to http://localhost:3000 with Chrome. The app should be running.
 5. Open as many clients as you want, on as many computers as you want, then open the admin page in a new Chrome tab.
-6. Paste the admin password into the box, and click submit.
+6. Paste the admin password (Look at the console where you did `yarn run start` for a line that looks like `ADMIN PASSWORD: xxx`) into the box, and click submit.
 
 An interface will appear, allowing you to control the sources playing on each client individually. If you name the clients using the client name box, the client's settings will be saved to `storage.json` using that name, and will be recalled any time you enter that name, even if you restart the server.
 

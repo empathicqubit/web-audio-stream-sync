@@ -65,8 +65,8 @@ function getProps (render) {
             sources: [],
             realPosition: 0,
             clientId: 0,
-            x: 0,
-            y: 0,
+            x: Math.floor(Math.random() * 400),
+            y: Math.floor(Math.random() * 400),
             onDrag: (evt, data) => {
                 updateX(data.x);
                 updateY(data.y);

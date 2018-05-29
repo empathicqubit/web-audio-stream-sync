@@ -6,19 +6,21 @@ const fs = require('fs');
 const cors = require('cors');
 const execFile = q.denodeify(require('child_process').execFile);
 const path = require('path');
+const statSync = require('fs').statSync;
 const lowdb = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const readFile = q.denodeify(fs.readFile);
+const passwordGenerator = require('password-generator');
 
-let PASSWORD = require('./config').password;
+const storagePath = path.join(__dirname, 'storage.json');
 
-let storage = lowdb(new FileSync(path.join(__dirname, 'storage.json')));
+let storage = lowdb(new FileSync(storagePath));
 
 let _savedSources = storage.get('savedSources').value();
 
 const savedSources = (set) => {
     if(set) {
-        _savedSources = set
+        _savedSources = set;
         storage.set('savedSources', _savedSources).write();
     }
 
@@ -26,6 +28,34 @@ const savedSources = (set) => {
 }
 
 _savedSources = _savedSources || savedSources({}); 
+
+let _adminPassword = storage.get('adminPassword').value();
+
+const adminPassword = (set) => {
+    if(set) {
+        _adminPassword = set;
+        storage.set('adminPassword', _adminPassword).write();
+    }
+
+    return _adminPassword;
+};
+
+_adminPassword = _adminPassword || adminPassword(passwordGenerator(32));
+
+const logAdminPassword = () => {
+    let adminLogLine = 'ADMIN PASSWORD: ' + adminPassword();
+    let formatLine = Array(adminLogLine.length).join('=');
+
+    console.log();
+    console.log(formatLine);
+    console.log();
+    console.log(adminLogLine);
+    console.log();
+    console.log(formatLine);
+    console.log();
+}
+
+let adminPasswordRepeated = false;
 
 let poller;
 let startTime;
@@ -110,6 +140,12 @@ const initServer = () => {
     });
 
     wsServer.on('connection', (client, req) => {
+        // Only repeat the password once.
+        if(!adminPasswordRepeated) {
+            logAdminPassword();
+            adminPasswordRepeated = true;
+        }
+
         client.admin = false;
         client.sources = [];
         client.id = Math.floor(Math.random() * 1000000);
@@ -148,10 +184,14 @@ const initServer = () => {
                 }
                 else if(data.type == 'hello_admin') {
                     // Gecting the password wrong shouldn't cause a disconnect.
-                    if(data.password == PASSWORD) {
+                    if(data.password == adminPassword()) {
                         wsSend(client, data); 
 
                         client.hello = client.admin = true;
+                    }
+                    else {
+                        console.log();
+                        console.log('An invalid password was entered!');
                     }
                 }
                 else if(!client.hello) {
@@ -269,7 +309,6 @@ module.exports = {
 
             savedSources(_savedSources);
         }
-
 
         if(!wsServer) {
             initServer();

@@ -181,10 +181,13 @@ class Admin extends React.Component {
                 <p>
                     This interface allows you to control the state of connected clients; which tracks are playing as well as the pan and gain for each track.
                 </p>
+                <p>
+                    The password for this interface is echoed to the command line. Look for the text &quot;ADMIN PASSWORD&quot; surrounded by equals signs.
+                </p>
                 {!this.state.passwordSubmitted
                     ? (
                     <div className="password-input">
-                        Enter password: <input type="text" value={this.state.password} onChange={ (evt) => this.changePassword(evt.target.value) } />
+                        Enter admin password: <input type="text" value={this.state.password} onChange={ (evt) => this.changePassword(evt.target.value) } />
                         <button onClick={ () => this.submitPassword() }>
                             Submit
                         </button>

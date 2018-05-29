@@ -7,7 +7,6 @@
     "debug": "npm-run-all --parallel debug-frontend debug-server",
     "debug-server": "nodemon --inspect-brk=0.0.0.0:9229 ./index.js",
     "debug-frontend": "cd ./frontend && yarn install && yarn run start",
-
     "start": "npm-run-all --parallel frontend server",
     "frontend": "cd ./frontend && yarn install && yarn run build && npx static-html-server -p 3000 -r ./build -f index.html",
     "server": "node ./index.js"
@@ -21,6 +20,7 @@
     "music-metadata": "^1.1.0",
     "node-storage": "^0.0.7",
     "npm-run-all": "^4.1.2",
+    "password-generator": "^2.2.0",
     "q": "^1.5.1",
     "serve": "^6.5.7",
     "ws": "^4.0.0"

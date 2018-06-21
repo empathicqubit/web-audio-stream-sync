@@ -4,10 +4,14 @@ require('dotenv').config();
 const express = require('express');
 const q = require('q');
 const fs = require('fs');
+const stat = q.denodeify(fs.stat);
+const writeFile = q.denodeify(fs.writeFile);
+const readdir = q.denodeify(fs.readdir);
 const cors = require('cors');
 const execFile = q.denodeify(require('child_process').execFile);
 const musicMetadata = require('music-metadata');
 const path = require('path');
+
 const ws = require('./ws');
 const config = require('./config.js');
 
@@ -47,8 +51,26 @@ const getDuration = (filename) => {
         });
 };
 
+const audioDir = path.join(__dirname, 'frontend/public/audio');
+
 q.resolve()
-    .then(() => getDuration(path.join(__dirname + '/frontend/public/audio', files[0])))
+    .then(() => {
+        const envPath = path.join(__dirname, '.env');
+        return stat(envPath)
+            .catch(() => {
+                return readdir(audioDir)
+                    .then(files => {
+                        if(files.length) {
+                            const contents = `
+AUDIO_FILES_ARRAY=${JSON.stringify(files)}
+`;
+
+                            return writeFile(envPath, contents, 'utf8');
+                        }
+                    });
+            })
+    })
+    .then(() => getDuration(path.join(audioDir, files[0])))
     .then(audioLength => {
         let startTime = Date.now();
 
@@ -56,6 +78,5 @@ q.resolve()
     })
     .catch(e => {
         console.error(e);
-        metaFile.close();
         process.exit(1);
     });

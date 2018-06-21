@@ -21,7 +21,7 @@ Running
 ----------------------------
 
 1. Create a folder at /frontend/public/audio and save your OGG audio files there. They should all be the same length.
-2. Copy the file /.env.sample to /.env. Change the `AUDIO_FILES_ARRAY` to include your files.
+2. Copy the file /.env.sample to /.env. Change the `AUDIO_FILES_ARRAY` to include your files. If you do not create this file, it will be generated automatically.
 3. Run the following commands: 
 ```sh
 yarn install
